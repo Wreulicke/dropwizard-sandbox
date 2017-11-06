@@ -39,8 +39,9 @@ public class MyApplication extends Application<MyConfiguration> {
       }
     });
 
-    bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
-      new EnvironmentVariableSubstitutor(false)));
+    bootstrap.setConfigurationSourceProvider(
+      new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
+        new EnvironmentVariableSubstitutor(false)));
 
     bootstrap.addBundle(hibernateBundle);
   }

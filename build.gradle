@@ -61,6 +61,7 @@ dependencies {
     compile 'io.dropwizard.metrics:metrics-healthchecks:3.2.5'
     compile 'io.dropwizard.metrics:metrics-core:3.2.5'
     compile 'io.dropwizard.metrics:metrics-jvm:3.2.5'
+    compile 'io.dropwizard.metrics:metrics-servlets:3.2.5'
     
     compile 'io.dropwizard:dropwizard-core:1.2.0'
     
