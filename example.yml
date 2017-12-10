@@ -7,3 +7,8 @@ database:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.H2Dialect
     hibernate.hbm2ddl.auto: create
+
+logging:
+  level: INFO
+  loggers:
+    com.netflix.spectator.gc: DEBUG

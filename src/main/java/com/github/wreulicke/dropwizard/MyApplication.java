@@ -10,6 +10,7 @@ import com.codahale.metrics.Slf4jReporter;
 import com.github.wreulicke.dropwizard.user.User;
 import com.github.wreulicke.dropwizard.user.UserDAO;
 import com.github.wreulicke.dropwizard.user.UserService;
+import com.netflix.spectator.gc.GcLogger;
 
 import io.dropwizard.Application;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
@@ -48,6 +49,8 @@ public class MyApplication extends Application<MyConfiguration> {
 
   @Override
   public void run(MyConfiguration configuration, Environment environment) throws Exception {
+    GcLogger gc = new GcLogger();
+    gc.start(null);
 
     environment.healthChecks()
       .register("simple", new SimpleHealthCheck());
@@ -56,6 +59,8 @@ public class MyApplication extends Application<MyConfiguration> {
     UserService userService = new UnitOfWorkAwareProxyFactory(hibernateBundle).create(UserService.class, UserDAO.class, dao);
     environment.jersey()
       .register(new UserResource(userService));
+    environment.jersey()
+      .register(new HeavyResource());
 
     Slf4jReporter.forRegistry(environment.metrics())
       .outputTo(LoggerFactory.getLogger(MyApplication.class))

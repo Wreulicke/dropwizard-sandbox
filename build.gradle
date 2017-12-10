@@ -69,6 +69,8 @@ dependencies {
     compile 'io.dropwizard:dropwizard-migrations:1.2.0'
     compile 'com.h2database:h2:1.4.196'
     
+    compile 'com.netflix.spectator:spectator-ext-gc:0.59.0'
+    
     compile 'org.dhatim.io.dropwizard:dropwizard-metrics-elasticsearch:1.0.8'
 }
 
